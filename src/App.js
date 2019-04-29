@@ -33,15 +33,9 @@ class App extends Component {
     input: "",
     imageUrl: "",
     box: {},
-    route: "",
+    route: "signin",
     isSignedIn: false
   };
-
-  componentDidMount() {
-    fetch("http://localhost:3000")
-      .then(resp => resp.json())
-      .then(console.log);
-  }
 
   calculateFaceLocation = data => {
     const clarifaiFace =
@@ -97,7 +91,7 @@ class App extends Component {
           isSignedIn={isSignedIn}
         />
         {route === "home" ? (
-          <React.Fragment>
+          <div>
             <Logo />
             <Rank />
             <ImageLinkForm
@@ -105,7 +99,7 @@ class App extends Component {
               onSubmit={this.onSubmit}
             />
             <FaceRecognition box={box} imageUrl={imageUrl} />
-          </React.Fragment>
+          </div>
         ) : route === "signin" ? (
           <Signin onRouteChange={this.onRouteChange} />
         ) : (
