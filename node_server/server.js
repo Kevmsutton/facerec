@@ -35,10 +35,10 @@ app.get("/", (req, res) => {
 
 app.post("/signin", (req, res) => {
   if (
-    req.body.email === database.users[0].email &&
-    req.body.password === database.users[0].password
+    req.body.email === database.users[1].email &&
+    req.body.password === database.users[1].password
   ) {
-    res.json(database.users[0]);
+    res.json(database.users[1]);
   } else {
     res.status(400).json("error logging in");
   }
@@ -79,7 +79,7 @@ app.put("/image/", (req, res) => {
   database.users.forEach(user => {
     if (user.id === id) {
       found = true;
-      return res.json(user.entries++);
+      return res.json(++user.entries);
     }
   });
   if (!found) {
