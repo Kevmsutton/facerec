@@ -35,6 +35,7 @@ app.post('/register', (req, res) =>
 app.get('/profile/:id', (req, res) => profile.handleProfile(req, res, db));
 
 app.put('/image/', (req, res) => image.handleImage(req, res, db));
+app.post('/imageurl/', (req, res) => image.handleApiCall(req, res));
 
 app.listen(3000, () => {
   console.log('running on port 3000');
